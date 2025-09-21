@@ -1,2 +1,4 @@
 AquesTalk_python.egg-info/
 dist/
+build/
+.venv/

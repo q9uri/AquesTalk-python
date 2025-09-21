@@ -30,3 +30,12 @@ Required Notices
     - 詳細はAqLicense.txtをご覧ください。
 
 [blog.a-quest]: http://blog-yama.a-quest.com/?eid=970181
+
+```
+# 3.11.9-win32でローカルでビルド
+# pyenvからしかwin32は入りませんでした。uv だとだめみたい。
+uv pip install . pyinstaller
+uv run pyinstaller --noconfirm run.spec
+```
+
+dist\run\run /test.wav アアア f1

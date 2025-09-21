@@ -21,7 +21,7 @@
 
 import ctypes
 import io
-import wave
+from pathlib import Path
 import enum
 import hashlib
 import os
@@ -61,7 +61,7 @@ class AquesTalk:
         self._dll.AquesTalk_FreeWave.argtypes = (ctypes.POINTER(ctypes.c_char),)
         self._dll.AquesTalk_FreeWave.restype = None
 
-    def synthe(self, koe, speed=100):
+    def synthe(self, out_file: str, koe:str,  speed=100, ):
         """
         音声記号列から音声波形を生成します。
 
@@ -86,8 +86,10 @@ class AquesTalk:
         AquesTalkError
             音声波形の生成時にエラーが発生した場合
         """
-        wav = wave.open(io.BytesIO(self.synthe_raw(koe, speed)), 'rb')
-        return wav
+        #wav = wave.open(io.BytesIO(self.synthe_raw(koe, speed)), 'rb')
+        #return wav
+        Path(out_file).write_bytes(self.synthe_raw(koe, speed))
+        
 
     def synthe_raw(self, koe, speed=100):
         """
